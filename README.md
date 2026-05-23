@@ -1,17 +1,25 @@
-# algo_meal
+# 🥑 AlgoMeal (Lezzetli Plan)
 
-A new Flutter project.
+AlgoMeal, insanların günlük hayatta ne yemek yapacağına karar verememesi, plansız beslenmesi ve mevcut yemek uygulamalarının kişiselleştirme eksikliklerine çözüm sunan akıllı bir mobil uygulamadır.
 
-## Getting Started
+## 🚀 Özellikler
+* **Kişiselleştirilmiş Öneriler:** Kullanıcının beslenme hedeflerine (kilo verme, sağlıklı beslenme vb.) ve günlük kalori ihtiyacına uygun tarifler sunar.
+* **Malzemeye Göre Ara:** Kullanıcının elindeki malzemeleri seçerek yapabileceği en uygun tarifleri listeler.
+* **Eksik Malzeme & Satın Al:** Seçilen tarifteki eksik malzemeleri otomatik tespit eder ve e-ticaret/market sitelerine yönlendirir.
+* **Haftalık Planım:** Kullanıcıların haftalık yemek planları oluşturarak beslenme takibi yapmasını sağlar.
+* **Sosyal Etkileşim:** Tarif detaylarında kullanıcı yorumları ve puanlama sistemi barındırır.
 
-This project is a starting point for a Flutter application.
+## 🛠️ Kullanılan Teknolojiler
+* **Frontend:** Flutter & Dart
+* **State Management:** Provider
+* **Backend / Veritabanı:** Firebase (Authentication & Firestore)
 
-A few resources to get you started if this is your first Flutter project:
+## 🎨 Tasarım (Figma)
+Projemizin kullanıcı dostu ve minimalist arayüz tasarımı Figma üzerinde hazırlanmıştır.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+*(Buraya Figma'dan dışarı aktardığınız ekran görüntüsünü ekleyebilirsiniz)*
+![Figma Tasarımı](https://i.ibb.co/example/figma-tasarimi.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 👥 Geliştiriciler (Grup Üyeleri)
+* **Büşra Işık** - [GitHub Profili](https://github.com/busraisik)
+* **Senanur Şahin** - [GitHub Profili](https://github.com/senasahin0)
