@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "260915831579",
+    "project_id": "algomeal-4ebc5",
+    "storage_bucket": "algomeal-4ebc5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260915831579:android:64a8350cec3b230ab829be",
+        "android_client_info": {
+          "package_name": "com.example.algo_meal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWyK7Wl8gR8d7Bu6pcnF8sd_S1MsaeHQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
