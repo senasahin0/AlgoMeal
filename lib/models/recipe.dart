@@ -1,5 +1,6 @@
 class Recipe {
   final int id;
+  final String recipeId;
   final String title;
   final String image;
   final int readyInMinutes;
@@ -18,6 +19,7 @@ class Recipe {
 
   Recipe({
     required this.id,
+    this.recipeId = '',
     required this.title,
     required this.image,
     required this.readyInMinutes,
@@ -35,6 +37,7 @@ class Recipe {
   factory Recipe.fromJson(Map<String, dynamic> json) {
     return Recipe(
       id: json['id'] ?? 0,
+      recipeId: json['recipeId']?.toString() ?? json['id']?.toString() ?? '',
       title: json['title'] ?? '',
       image: json['imageUrl'] ?? '',
       readyInMinutes: json['readyInMinutes'] ?? 0,
@@ -51,5 +54,23 @@ class Recipe {
       ingredients: json['ingredients'] ?? [],
       steps: json['steps'] ?? [],
     );
+  }
+
+  String get stableRecipeId {
+    if (recipeId.trim().isNotEmpty) {
+      return recipeId.trim();
+    }
+
+    if (id > 0) {
+      return id.toString();
+    }
+
+    final titleKey = title
+        .trim()
+        .toLowerCase()
+        .replaceAll(RegExp(r'[^a-z0-9ğüşıöç]+'), '_')
+        .replaceAll(RegExp(r'_+'), '_');
+
+    return titleKey.isNotEmpty ? titleKey : 'unknown_recipe';
   }
 }

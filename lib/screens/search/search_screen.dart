@@ -16,12 +16,42 @@ class _SearchScreenState extends State<SearchScreen> {
   final List<String> ingredients = [];
 
   final List<Map<String, dynamic>> categories = [
-  {"emoji": "🍳", "name": "Kahvaltı","apiType":"Kahvaltı"},
-  {"emoji": "🍗", "name": "Ana Yemek","apiType":"Ana Yemek"},
-  {"emoji": "🍲", "name": "Çorba","apiType":"Çorba"},
-  {"emoji": "🥗", "name": "Salata","apiType":"Salata"},
-  {"emoji": "🍰", "name": "Tatlı","apiType":"Tatlı"},
-  {"emoji": "🥨", "name": "Atıştırmalık","apiType":"Atıştırmalık"},
+    {
+      "name": "Kahvaltı",
+      "apiType": "Kahvaltı",
+      "imageUrl":
+          "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=500&q=80",
+    },
+    {
+      "name": "Ana Yemek",
+      "apiType": "Ana Yemek",
+      "imageUrl":
+          "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+    },
+    {
+      "name": "Çorba",
+      "apiType": "Çorba",
+      "imageUrl":
+          "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80",
+    },
+    {
+      "name": "Salata",
+      "apiType": "Salata",
+      "imageUrl":
+          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+    },
+    {
+      "name": "Tatlı",
+      "apiType": "Tatlı",
+      "imageUrl":
+          "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=500&q=80",
+    },
+    {
+      "name": "Atıştırmalık",
+      "apiType": "Atıştırmalık",
+      "imageUrl":
+          "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=500&q=80",
+    },
   ];
 
   void addIngredient() {
@@ -38,57 +68,48 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F9F7),
-      appBar: AppBar(
-        title: const Text("Tarif Ara"),
-        centerTitle: false,
-      ),
+      appBar: AppBar(title: const Text("Tarif Ara"), centerTitle: false),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // SEARCH BAR
             TextField(
-  controller: searchController,
+              controller: searchController,
 
-  onSubmitted: (value) {
-    if (value.trim().isEmpty) return;
+              onSubmitted: (value) {
+                if (value.trim().isEmpty) return;
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => RecipeSearchScreen(
-          query: value,
-        ),
-      ),
-    );
-  },
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => RecipeSearchScreen(query: value),
+                  ),
+                );
+              },
 
-  decoration: InputDecoration(
-    hintText: "Yemek adı, malzeme veya kategori ara...",
-    prefixIcon: const Icon(Icons.search),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(14),
-    ),
-    focusedBorder: OutlineInputBorder(
-  borderRadius: BorderRadius.circular(14),
-  borderSide: const BorderSide(
-    color: Color(0xFF4CAF50),
-    width: 2,
-  ),
-),
-  ),
-),
+              decoration: InputDecoration(
+                hintText: "Yemek adı, malzeme veya kategori ara...",
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  borderSide: const BorderSide(
+                    color: Color(0xFF4CAF50),
+                    width: 2,
+                  ),
+                ),
+              ),
+            ),
 
             const SizedBox(height: 24),
 
             const Text(
               "Kategoriler",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 12),
@@ -97,77 +118,104 @@ class _SearchScreenState extends State<SearchScreen> {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: categories.length,
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 1.6,
+                childAspectRatio: 1.18,
               ),
               itemBuilder: (context, index) {
-  return InkWell(
-    borderRadius: BorderRadius.circular(14),
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => RecipeSearchScreen(
-            query: categories[index]["apiType"],
-            isCategory: true,
-          ),
-        ),
-      );
-    },
-    child: Container(
-      decoration: BoxDecoration(
-  color: Colors.white,
-  borderRadius: BorderRadius.circular(16),
-  boxShadow: [
-    BoxShadow(
-      color: Colors.black.withOpacity(0.05),
-      blurRadius: 10,
-      offset: const Offset(0, 4),
-    ),
-  ],
-),
-      child: Column(
-         mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: const Color(0xFFE8F5E9),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        categories[index]["emoji"],
-        style: const TextStyle(fontSize: 28),
-      ),
-    ),
-    const SizedBox(height: 10),
-    Text(
-      categories[index]["name"],
-      style: const TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 15,
-      ),
-    ),
-  ],
-        
-      ),
-    ),
-  );
-},
+                return InkWell(
+                  borderRadius: BorderRadius.circular(14),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => RecipeSearchScreen(
+                          query: categories[index]["apiType"],
+                          isCategory: true,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(16),
+                          ),
+                          child: Image.network(
+                            categories[index]["imageUrl"],
+                            width: double.infinity,
+                            height: 86,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                width: double.infinity,
+                                height: 86,
+                                color: const Color(0xFFE8F5E9),
+                                child: const Icon(
+                                  Icons.restaurant,
+                                  color: Color(0xFF4CAF50),
+                                  size: 34,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 10,
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    categories[index]["name"],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                                const Icon(
+                                  Icons.chevron_right,
+                                  color: Color(0xFF4CAF50),
+                                  size: 20,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 24),
 
             const Text(
               "Malzemeye Göre Ara",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 12),
@@ -189,10 +237,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 const SizedBox(width: 10),
 
                 ElevatedButton(
-                   style: ElevatedButton.styleFrom(
-    backgroundColor: const Color(0xFF4CAF50),
-    foregroundColor: Colors.white,
-  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF4CAF50),
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: addIngredient,
                   child: const Text("Ekle"),
                 ),
@@ -207,10 +255,13 @@ class _SearchScreenState extends State<SearchScreen> {
               children: ingredients.map((ingredient) {
                 return Chip(
                   backgroundColor: const Color(0xFFE8F5E9),
-                  label: Text(ingredient,style:const TextStyle(
-                    color: Color(0xFF2E7D32),
-      fontWeight: FontWeight.w500,
-                  )),
+                  label: Text(
+                    ingredient,
+                    style: const TextStyle(
+                      color: Color(0xFF2E7D32),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                   deleteIcon: const Icon(Icons.close),
                   onDeleted: () {
                     setState(() {
@@ -227,65 +278,30 @@ class _SearchScreenState extends State<SearchScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-    backgroundColor: const Color(0xFF4CAF50),
-    foregroundColor: Colors.white,
-    minimumSize: const Size.fromHeight(50),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(14),
-    ),
-  ),
+                  backgroundColor: const Color(0xFF4CAF50),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size.fromHeight(50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
                 onPressed: () {
-                    if (ingredients.isEmpty) {
-    return;
-  }
+                  if (ingredients.isEmpty) {
+                    return;
+                  }
 
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) =>
-          IngredientSearchScreen(
-        ingredients: ingredients,
-      ),
-    ),
-  );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          IngredientSearchScreen(ingredients: ingredients),
+                    ),
+                  );
                 },
                 child: const Text("Tarifleri Göster"),
               ),
             ),
-
-            const SizedBox(height: 30),
-
-            const Text(
-              "En Çok Aratılan Tarifler",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 12),
-
-            ListView.builder(
-              itemCount: 4,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Card(
-                  color: Colors.white,
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: ListTile(
-                    leading: const CircleAvatar(
-                      backgroundColor: const Color(0xFFE8F5E9),
-                      child: Icon(Icons.restaurant,color:Color(0xFF4CAF50)),
-                    ),
-                    title: Text("Tarif ${index + 1}"),
-                    subtitle: const Text("350 kcal"),
-                    trailing: const Icon(Icons.favorite_border,
-                     color: Color(0xFF4CAF50),),
-                  ),
-                );
-              },
-            ),
+            const SizedBox(height: 24),
           ],
         ),
       ),
