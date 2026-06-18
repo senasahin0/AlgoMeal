@@ -2,7 +2,7 @@
 
 AlgoMeal, kullanıcıların beslenme hedeflerine uygun tarifler keşfetmesini, günlük kalori takibini yapmasını ve haftalık yemek planı oluşturmasını sağlayan Flutter tabanlı akıllı beslenme uygulamasıdır.
 
-## 🚀 Özellikler
+## Özellikler
 
 - Kişiselleştirilmiş beslenme hedefleri
 - Günlük kalori ve makro takibi
@@ -14,18 +14,9 @@ AlgoMeal, kullanıcıların beslenme hedeflerine uygun tarifler keşfetmesini, g
 - Firebase Authentication
 - Firebase Firestore entegrasyonu
 
-## 🛠️ Kullanılan Teknolojiler
-
-- Flutter
-- Dart
-- Firebase Authentication
-- Cloud Firestore
-- Provider
-- Material Design 3
-
 ---
 
-## 📱 Uygulama Ekran Görüntüleri
+## Uygulama Ekran Görüntüleri
 
 ### Giriş Ekranı
 
